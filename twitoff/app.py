@@ -1,5 +1,5 @@
 from flask import Flask
-from .db_model import db
+from .db_model import db, User, Tweet
 
 def create_app():
     "create an instance of our app"
@@ -13,11 +13,19 @@ def create_app():
     def root():
         return "welcome to twitoff"
     
-    @app.route('/<username>/<followers>')
-    def add_user(username, followers)
+    @app.route('/user/<username>/<followers>')
+    def add_user(username, followers):
         user = User(username=username, followers=followers)
         db.session.add(user)
         db.session.commit()
         return (f'{username} has been added.')
+    
+    @app.route('/tweet/<text>/<user_id>')
+    def add_tweet(user_id, text): 
+        print('tweet')
+        t = Tweet(user_id=user_id, text=text)
+        db.session.add(t)
+        db.session.commit()
+        return (f'{text} has been added.')
 
     return app
