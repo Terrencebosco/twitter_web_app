@@ -1,0 +1,7 @@
+pylint 
+Flask 
+Falsk-SQLalchemy
+Falsk-Migrate
+pylint-flask
+python-dotenv
+tweep
