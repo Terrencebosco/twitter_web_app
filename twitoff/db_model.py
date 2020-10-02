@@ -4,7 +4,7 @@ db = SQLAlchemy()
 
 
 class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    Id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     followers = db.Column(db.String(120), unique=True, nullable=False)
     
@@ -13,10 +13,10 @@ class User(db.Model):
 
 
 class Tweet(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    Id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(280), unique=True, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    # user = db.relationship('User', backref=db.backref('Tweet', lazy=True))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.Id'), nullable=False)
+    user = db.relationship('User', backref=db.backref('Tweet', lazy=True))
 
     def __repr__(self):
         return '<tweet %r>' % self.tweet

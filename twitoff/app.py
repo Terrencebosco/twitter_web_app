@@ -20,10 +20,10 @@ def create_app():
         db.session.commit()
         return (f'{username} has been added.')
     
-    @app.route('/tweet/<text>/<user_id>')
-    def add_tweet(user_id, text): 
+    @app.route('/tweet/<text>/<user>')
+    def add_tweet(user, text): 
         print('tweet')
-        t = Tweet(user_id=user_id, text=text)
+        t = Tweet(user=user, text=text)
         db.session.add(t)
         db.session.commit()
         return (f'{text} has been added.')
