@@ -14,6 +14,9 @@ jupyter = "*"
 tweepy = "*"
 python-dotenv = "*"
 spacy = "*"
+sklearn = "*"
+matplotlib = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.8"
