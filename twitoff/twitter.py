@@ -48,7 +48,7 @@ def add_user_tweepy(username):
         # Loop over tweets, get embedding and add to Tweet table
         for tweet in tweets:
 
-            # Get an examble basilica embedding for first tweet
+            # Get an examble spacy embedding for first tweet
             embedding = vectorize_tweet(nlp, tweet.full_text)
 
             # Add tweet info to Tweet table
@@ -117,3 +117,7 @@ def add_user_history(username):
         # If no errors happend than commit the records
         DB.session.commit()
         print('Successfully saved tweets to DB!')
+
+def update_all_users():
+    for user in User.query.all():
+        add_user_tweepy(user.username)
