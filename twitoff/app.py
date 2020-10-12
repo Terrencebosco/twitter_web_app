@@ -1,13 +1,16 @@
 from flask import Flask, render_template, request
+from os import getenv
 from .db_model import db, User, Tweet
 from .twitter import add_user_tweepy, update_all_users
 from .predict import predict_user
+
+dotenv.load_dotenv()
 
 def create_app():
     "create an instance of our app"
 
     app = Flask(__name__)
-    app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///twitoff.sqlite3'
+    app.config["SQLALCHEMY_DATABASE_URI"] = getenv('DATABASE_URL')
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app) #link sql to flask app
 
