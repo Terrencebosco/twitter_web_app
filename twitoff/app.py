@@ -4,8 +4,6 @@ from .db_model import db, User, Tweet
 from .twitter import add_user_tweepy, update_all_users
 from .predict import predict_user
 
-dotenv.load_dotenv()
-
 def create_app():
     "create an instance of our app"
 
