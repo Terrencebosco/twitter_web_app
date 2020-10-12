@@ -17,7 +17,7 @@ class User(db.Model):
 
 class Tweet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    tweet = db.Column(db.String(280), unique=True, nullable=False)
+    tweet = db.Column(db.String(380), unique=True, nullable=False)
     embedding = db.Column(db.PickleType, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship('User', backref=db.backref('tweet', lazy=True))
