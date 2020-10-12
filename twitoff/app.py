@@ -52,11 +52,12 @@ def create_app():
     def reset():
         db.drop_all()
         db.create_all()
+        return render_template('base.html', title='Reset The Database!', users=User.query.all())
 
     @app.route('/update', methods=['GET'])
     def update():
         update_all_users()
-        return render_template('base.html', title='All tweets updated', users=User.query.all())
+        return render_template('base.html', title='All Tweets Updated!', users=User.query.all())
 
 
     return app
